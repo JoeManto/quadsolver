@@ -1,14 +1,11 @@
 #include <stdio.h>
 #include "getInput.h"
-
-void inputCallBack(char * buffer);
-void showDetails();
+#include "quadsolver.h"
 
 
 int main(int argc, char const *argv[]) {
 
   showDetails();
-  int status = 1;
   //200 should be the max number of character for 3 floats.
   while(input(inputCallBack,200));
 
@@ -21,6 +18,11 @@ void showDetails(){
   printf("%s\n","[Exit] 'q' to quit the program");
 }
 
-void inputCallBack(char * buffer){
-  printf(":::%s\n",buffer);
+void inputCallBack(double * args){
+  solve(args);
+
+}
+
+void solve(double * args){
+
 }

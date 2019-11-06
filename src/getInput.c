@@ -5,7 +5,7 @@
 #include "getInput.h"
 
 
-int input(void (*f)(char *),int size){
+int input(void (*f)(double *),int size){
   char buffer[size];
   char * bufferPointer = fgets(buffer, size, stdin);
 
@@ -27,13 +27,13 @@ int input(void (*f)(char *),int size){
 
       double * doubleTokens = malloc(sizeof(float)*3);
 
-      convertTokensToDouble(doubleTokens,stringTokenizedBuffer,3);
+      if(!convertTokensToDouble(doubleTokens,stringTokenizedBuffer,3)) return 1;
 
-      printf("%.15lf\n",doubleTokens[0]);
-      printf("%.16lf\n",doubleTokens[1]);
-      printf("%.16lf\n",doubleTokens[2]);
+      printf("%.14g\n",doubleTokens[0]);
+      printf("%.14g\n",doubleTokens[1]);
+      printf("%.14g\n",doubleTokens[2]);
 
-      (*f)(bufferPointer);
+      (*f)(doubleTokens);
       printf("%s\n","Enter another input | [q] : quit");
       return 1;
     }
@@ -68,8 +68,31 @@ int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens){
   return (i == 3);
 }
 
-double * convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int numTokens){
-  for(int i = 0; i<numTokens; i++) sscanf(tokenizeInputBuffer[i], "%lf", &doubleTokens[i]);
+//if this function returns 0, it will exit the input function and prompt for new input
+int convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int numTokens){
+  int res = 1;
+  for(int i = 0; i<numTokens; i++){
+    sscanf(tokenizeInputBuffer[i], "%lf", &doubleTokens[i]);
+    //run fpclassify to check for an inf, nan, 
+    //a == 0
+    if(i == 0 && fpclassify(doubleTokens[0]) == FP_ZERO){ //make sure a is not 0
+      printf("%s\n","Input Error: first argument can't be zero");
+      return 0;
+    }
+    res = classifyDouble(doubleTokens[i]);
+  }
+  return res;
+}
+
+int classifyDouble(double input){
+  switch(fpclassify(input)) {
+        case FP_INFINITE:  printf("%.14lf %s\n",input,"classified as inf"); return 0;
+        case FP_NAN:       printf("%.14lf %s\n",input,"classified as NAN"); return 0;
+        case FP_NORMAL:    return 1;
+        case FP_SUBNORMAL: printf("%.14lf %s\n",input,"warning: classified as subnormal and number was rounded up"); return 1;
+        case FP_ZERO:      return 1;
+        default:           printf("%.14lf %s\n",input,"classified as unknown"); return 1;
+    }
 }
 
 void showHelp(){
