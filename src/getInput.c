@@ -23,12 +23,15 @@ int input(void (*f)(char *),int size){
       char ** stringTokenizedBuffer = malloc(sizeof(char*)*3);
 
       //tokenize bufferPointer on " " -> stringTokenizedBuffer
-      tokenizeInput(stringTokenizedBuffer,bufferPointer,3);
+      if(!tokenizeInput(stringTokenizedBuffer,bufferPointer,3)) return 1;
 
-      printf("%s\n",stringTokenizedBuffer[0]);
-      printf("%s\n",stringTokenizedBuffer[1]);
-      printf("%s\n",stringTokenizedBuffer[2]);
+      double * doubleTokens = malloc(sizeof(float)*3);
 
+      convertTokensToDouble(doubleTokens,stringTokenizedBuffer,3);
+
+      printf("%.15lf\n",doubleTokens[0]);
+      printf("%.16lf\n",doubleTokens[1]);
+      printf("%.16lf\n",doubleTokens[2]);
 
       (*f)(bufferPointer);
       printf("%s\n","Enter another input | [q] : quit");
@@ -38,6 +41,7 @@ int input(void (*f)(char *),int size){
     perror("Input Error: ");
     exit(errno);
   }
+  return 0;
 }
 
 int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens){
@@ -45,7 +49,7 @@ int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens){
   char bufferCopy[strlen(buffer)];
   strcpy(bufferCopy,buffer);
 
-	char delim[] = ",";
+	char delim[] = " \t\n";
 	char *ptr = strtok(bufferCopy, delim);
 
   int i = 0;
@@ -61,8 +65,11 @@ int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens){
   if(i < numTokens){
     printf("\n%s\n","Invaild Input: number of arguments less than 3");
   }
+  return (i == 3);
+}
 
-  return 1;
+double * convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int numTokens){
+  for(int i = 0; i<numTokens; i++) sscanf(tokenizeInputBuffer[i], "%lf", &doubleTokens[i]);
 }
 
 void showHelp(){

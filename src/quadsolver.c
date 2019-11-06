@@ -10,11 +10,7 @@ int main(int argc, char const *argv[]) {
   showDetails();
   int status = 1;
   //200 should be the max number of character for 3 floats.
-  while(input(inputCallBack,200)){
-
-  }
-  //printf("%d",status);
-
+  while(input(inputCallBack,200));
 
   return 0;
 }

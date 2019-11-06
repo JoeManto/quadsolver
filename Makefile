@@ -4,5 +4,11 @@ all:
 quad:
 	./quadsolver
 
+spikeCreate:
+	gcc -Wall -Wpedantic -std=c11 spikes/*.c -g -o spike
+
+spike:
+	./spike
+
 clean:
-	rm -f src/*.o all quadsolverexc
+	rm -f src/*.o spikes/*.o all quadsolver spike
