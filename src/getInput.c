@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "getInput.h"
 
 /**
@@ -25,9 +27,12 @@ int input(void (*f)(double *),int size){
     }else if(checkForFlag('h',bufferPointer)){
       showHelp();
       return 1;
-    
-    //input is normal 
+    }else if(checkForFlag('l',bufferPointer)){
+      setUpLogging();
+      return 1;
     }else{
+      //input is normal 
+
       //define token buffer pointer
       char ** stringTokenizedBuffer = malloc(sizeof(char*)*3);
 
@@ -136,4 +141,22 @@ void showHelp(){
  */
 int checkForFlag(char flag , char * buffer){
   return (*buffer == flag && *(buffer+1) == '\n');
+}
+
+int setUpLogging(){
+
+  int out = open("cout.log",O_RDWR | O_CREAT | O_APPEND, 0600);
+  if(-1 == out){perror("can't open clog.out");return 255;}
+
+  int save_out = dup(fileno(stdout));
+
+  if(-1 == dup2(out,fileno(stdout))){perror("can't redirect to stdout");return 255;}
+/*
+  //fflush(stdout); 
+  qclose(out);
+  dup2(save_out,fileno(stdout));
+  
+  close(save_out);
+*/
+  return 1;
 }

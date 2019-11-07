@@ -5,3 +5,4 @@ void showHelp();
 int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens);
 int convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int numTokens);
 int classifyDouble(double input);
+int setUpLogging();
