@@ -144,19 +144,9 @@ int checkForFlag(char flag , char * buffer){
 }
 
 int setUpLogging(){
-
-  int out = open("cout.log",O_RDWR | O_CREAT | O_APPEND, 0600);
+  printf("%s\n","logging started...stdout stream is now redirected to cout.log");
+  int out = open("cout.log",O_RDWR | O_CREAT | O_TRUNC, 0600);
   if(-1 == out){perror("can't open clog.out");return 255;}
-
-  int save_out = dup(fileno(stdout));
-
   if(-1 == dup2(out,fileno(stdout))){perror("can't redirect to stdout");return 255;}
-/*
-  //fflush(stdout); 
-  qclose(out);
-  dup2(save_out,fileno(stdout));
-  
-  close(save_out);
-*/
   return 1;
 }

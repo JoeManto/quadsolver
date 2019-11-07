@@ -16,6 +16,7 @@ void showDetails(){
   printf("%s\n","QuadSolver v1 written by Joe Manto & Jared Teller");
   printf("%s\n","[Help] 'h' for the help details");
   printf("%s\n","[Exit] 'q' to quit the program");
+  printf("%s\n","[Logging] 'l' to start redirecting sdtout");
 }
 
 
@@ -29,13 +30,13 @@ void showDetails(){
 double findDiscriminant(double a, double b, double c){
     double discriminant = b * b - 4.0 * a * c;
     if(discriminant < 0.0f){
-        printf("Discriminant: %lf   No real number solution with the given input.\n", discriminant);
+        printf("\nDiscriminant: %lf   No real number solution with the given input.\n", discriminant);
         return -1;
     }else if(discriminant > 0.0f){
-        printf("Discriminant: %lf   Two distinct real number answers are expected.\n", discriminant);
+        printf("\nDiscriminant: %lf   Two distinct real number answers are expected.\n", discriminant);
         return discriminant;
     }else{
-        printf("Discriminant: %lf   A repeated real number solution is expected.\n", discriminant);
+        printf("\nDiscriminant: %lf   A repeated real number solution is expected.\n", discriminant);
         return discriminant;
     }
     return 0;
