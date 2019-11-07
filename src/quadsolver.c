@@ -69,5 +69,5 @@ void solve(double * args){
   }
   
   printRoots(roots);
-  free(*args);
+  free(args);
 }

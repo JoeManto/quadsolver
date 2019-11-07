@@ -59,8 +59,6 @@ int input(void (*f)(double *),int size){
   return 0;
 }
 
-//
-
 /**
  * this function will split the input by space or tab, and store the results
  * into a buffer that will later be checked for proper input
