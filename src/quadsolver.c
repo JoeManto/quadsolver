@@ -7,7 +7,7 @@ int main(int argc, char const *argv[]) {
 
   showDetails();
   //200 should be the max number of character for 3 floats.
-  while(input(inputCallBack,200));
+  while(input(solve,1024));
 
   return 0;
 }
@@ -18,13 +18,6 @@ void showDetails(){
   printf("%s\n","[Exit] 'q' to quit the program");
 }
 
-/**
- * This is a call back function that is called input.c
- * @param [double *] the arg of the poly
- */
-void inputCallBack(double * args){
-  solve(args);
-}
 
 /**
  * This function finds the discriminant of the quadratic (what is under the square root) b*b -4ac
@@ -75,7 +68,5 @@ void solve(double * args){
   }
   
   printRoots(roots);
-
   free(*args);
-  
 }
