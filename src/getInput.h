@@ -4,7 +4,7 @@
  * Licensed under GNU General Public License. See LICENSE.txt for more information.
  */ 
 #include <math.h>
-int input(void (*f)(double *),int size);
+int input(double * (*f)(double *),int size);
 int checkForFlag(char flag , char * buffer);
 void showHelp();
 int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens);

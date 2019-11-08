@@ -7,3 +7,5 @@ cout.log
 unit.dSYM
 system.dSYM
 cerr.log
+system
+unit

@@ -39,12 +39,19 @@ int main(int argc, char*argv[]){
     }
 }
 
-//sscanf convert a string to a float SPIKE 1
+//sscanf convert a string to a double SPIKE 1
+//sscanf convereting a ascii string to a double
 int sscanfConversion(){
     char temp[] = "1.000567";
     double num = 0;
     sscanf(temp, "%lf", &num);
     printf("%f\n", num);
+    
+    //attempts to convert a string into a double
+    char * string = "joe";
+    double * convert = malloc(sizeof(double));
+    sscanf(string, "%lf\n", convert);
+    printf("%.14g",*convert);
     return 0;
 }
 
@@ -87,6 +94,4 @@ int findDiscriminant(float a, float b, float c){
     }
     return 0;
 }
-
-
 

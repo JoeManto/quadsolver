@@ -18,12 +18,13 @@ spike:
 unit:
 	gcc -Wall -Wpedantic -std=c11 testing/linkerQuadSolver.c testing/unit/*.c src/getInput.c -g -o unit 
 
+#run unit tests
 test-unit:
 	./unit all
 
 #build system tests exc
 system:
-	gcc -Wall -Wpedantic -std=c11 testing/system/*.c -g -o system
+	gcc -Wall -Wpedantic -std=c11 testing/linkerQuadSolver.c testing/system/*.c src/getInput.c -g -o system
 
 #run system tests
 test-system:

@@ -16,7 +16,7 @@
  * @param [void (*f)(double *)] call back function
  * @param [int] buffer size for fgets
  */
-int input(void (*f)(double *),int size){
+int input(double * (*f)(double *),int size){
   char buffer[size];
   char * bufferPointer = fgets(buffer, size, stdin);
 

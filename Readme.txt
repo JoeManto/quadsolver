@@ -43,8 +43,12 @@ __________________________________________________________
 -----------------------Testing----------------------------
 To run all unit tests do:
     make unit
-    ./unit all
+    ./unit all  or make test-unit
     
+To run all system tests do:
+    make system
+    ./system  or make test-system
+
 See readme.txt in the testing directory for more
 information.
 __________________________________________________________

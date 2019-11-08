@@ -43,6 +43,8 @@ int main(int argc,char *argv[]){
             checkFlagTest();
             checkForRoundOffTest();
             checkDoubleClassification();
+            checkCovertTokensToDouble();
+            checkFindDiscriminant();
         }
     }else{
         switch (func){
@@ -57,6 +59,7 @@ int main(int argc,char *argv[]){
             break;
         case 4:
             checkCovertTokensToDouble();
+            break;
         case 5:
             checkFindDiscriminant();
         default:
@@ -134,6 +137,8 @@ int checkDoubleClassification(){
 /**
  *  ----- function Definition 
  * int convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int numTokens)
+ * 
+ * Checks the conversion from float strings to doubles
  */
 
 int checkCovertTokensToDouble(){
@@ -145,18 +150,40 @@ int checkCovertTokensToDouble(){
     *(tokens+1) = malloc(sizeof(char)*40);
     *(tokens+2) = malloc(sizeof(char)*40);
 
+    //checking if normal input
     strcpy(tokens[0],"12.93");
     strcpy(tokens[1],"359.39929492");
     strcpy(tokens[2],"0.324");
     
     assert(convertTokensToDouble(doubles,tokens,numTokens) == 1);
     
+    //checking for a = FP_ZERO
     strcpy(tokens[0],"0.0");
     strcpy(tokens[1],"359.39929492");
     strcpy(tokens[2],"0.324");
     
     assert(convertTokensToDouble(doubles,tokens,numTokens) == 0);
 
+    //checking for ascii input
+    strcpy(tokens[0],"joe");
+    strcpy(tokens[1],"jo jo");
+    strcpy(tokens[2],"manto");
+
+    assert(convertTokensToDouble(doubles,tokens,numTokens) == 0);
+
+    //checking for ascii input
+    strcpy(tokens[0],"30.34");
+    strcpy(tokens[1],"jo jo");
+    strcpy(tokens[2],"934.123");
+
+    assert(convertTokensToDouble(doubles,tokens,numTokens) == 0);
+
+    //checking for normal input
+    strcpy(tokens[0],"123.3434234");
+    strcpy(tokens[1],"349.39494939493");
+    strcpy(tokens[2],"3492.00000000023");
+
+    assert(convertTokensToDouble(doubles,tokens,numTokens) == 1);
     return 0;
 }
 
@@ -165,11 +192,18 @@ int checkCovertTokensToDouble(){
  *  ----- function Definition 
  * double findDiscriminant(double a, double b, double c)
  * This function takes in a, b, and c and finds the discriminant
- * Importand values are d < 0, d == 0, d > 0
+ * Important values are d < 0, d == 0, d > 0
  */
 int checkFindDiscriminant(){
     double a = 1, b = 2, c = 1; //should return d = 0, expected 0
+    assert(findDiscriminant(a,b,c) == 0);
+
+    a = 4.12321, b = 237.2321412, c = 23; //should return d > 0, expected d > 0
+    assert(findDiscriminant(a,b,c) > 0);
     
-    findDiscriminant(a,b,c);
+    a = 12.12312421, b = 0, c=21321; //should be d < 0, expected d < 0
+    assert(findDiscriminant(a,b,c) < 0);    
     return 0;
 }
+
+

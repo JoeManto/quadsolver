@@ -4,8 +4,10 @@
  * Licensed under GNU General Public License. See LICENSE.txt for more information.
  */ 
 #include <stdio.h>
+#include <stdlib.h>
 #include "getInput.h"
 #include "quadsolver.h"
+#include <math.h>
 
 /**
  * Execution of the program starts here
@@ -67,14 +69,17 @@ void printResult(double a, double b, double c, double * roots){
  * This is the core solving function that will compute the roots of the quadratic equation
  * @param [double *args] The 3 arguments a b and c 
  */
-void solve(double * args){
+double * solve(double * args){
   double a = args[0];
   double b = args[1];
   double c = args[2];
   double d = findDiscriminant(a, b, c); //get the discriminant
-  if(d == -1) return; //negative discriminant
 
-  double roots[] = {-1,-1};
+  
+  double * roots = malloc(sizeof(double)*2);
+  roots[0] = FP_NAN; roots[1] = FP_NAN;
+
+  if(d == -1) return roots; //negative discriminant
   if(fpclassify(d) == FP_ZERO){ //the discriminant was 0 so the solution is one repeated number -b / 2 * a
     double rootx2 = (-b) / (2 * a); //no need to +- 0
      roots[0] = rootx2;
@@ -87,4 +92,6 @@ void solve(double * args){
   
   printResult(a,b,c,roots);
   free(args);
+
+  return roots;
 }
