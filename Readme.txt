@@ -22,6 +22,16 @@ executable ./quadsolver and start prompting for user
 input. To create the executable run "make".
 __________________________________________________________
 
+-------------------------Automation-----------------------
+
+We used a make file for Automation to create a consistent compiling and linking experience.
+Our make file handles all the of the following
+-   compiling and linking the correct object files for quadsolver
+-   compiling and assembling all the spikes
+-   compiling,linking,and assembling all unit tests
+-   compiling,linking, and assembling all the system tests
+__________________________________________________________
+
 ---------------------Version Control----------------------
 Git was used for version control of the program and 
 allowed for effective pair programming. All tests must 
