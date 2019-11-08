@@ -45,7 +45,7 @@ int input(void (*f)(double *),int size){
       if(!tokenizeInput(stringTokenizedBuffer,bufferPointer,3)) return 1;
 
       //define array of doubles
-      double * doubleTokens = malloc(sizeof(float)*3);
+      double * doubleTokens = malloc(sizeof(double)*3);
 
       //convert all the tokens to the double array
       if(!convertTokensToDouble(doubleTokens,stringTokenizedBuffer,3)) return 1;
