@@ -1,3 +1,8 @@
+/**
+ * Part of Quadsolver program
+ * Software created by Jared Teller and Joe Manto
+ * Licensed under GNU General Public License. See LICENSE.txt for more information.
+ */ 
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>

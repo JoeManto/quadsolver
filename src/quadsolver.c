@@ -1,8 +1,17 @@
+/**
+ * Part of Quadsolver program
+ * Software created by Jared Teller and Joe Manto
+ * Licensed under GNU General Public License. See LICENSE.txt for more information.
+ */ 
 #include <stdio.h>
 #include "getInput.h"
 #include "quadsolver.h"
 
-
+/**
+ * Execution of the program starts here
+ * @param [int argc] the number of command line arguments
+ * @param [char const *argv] the array of strings entered in the command line
+ */ 
 int main(int argc, char const *argv[]) {
 
   showDetails();
@@ -12,6 +21,9 @@ int main(int argc, char const *argv[]) {
   return 0;
 }
 
+/**
+ * This function prints the details section of the program to the user when called.
+ */
 void showDetails(){
   printf("%s\n","QuadSolver v1 written by Joe Manto & Jared Teller");
   printf("%s\n","[Help] 'h' for the help details");
@@ -42,6 +54,9 @@ double findDiscriminant(double a, double b, double c){
     return 0;
 }
 
+/**
+ * This function is a helper that prints the two roots of the quadratic
+ */
 void printRoots(double * roots){
   printf("\nroot1: %.14g,\troot2: %.14g\n\n",roots[0],roots[1]);
 }
