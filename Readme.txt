@@ -5,7 +5,7 @@ Joe Manto - joe.m.manto@wmich.edu
 __________________________________________________________
 
 ------------------------Client----------------------------
-J.K.K. Consulting.
+J.K.K. Consulting. - john.kapenga@wmich.edu
 __________________________________________________________
 
 ---------------------Specifications-----------------------
@@ -26,6 +26,12 @@ __________________________________________________________
 Git was used for version control of the program and 
 allowed for effective pair programming. All tests must 
 pass before any change is made to the program.
+
+Git Commands:
+    git init
+    git add -A
+    git commit -m "message"
+    git push
 __________________________________________________________
 
 -------------------------Standards------------------------
