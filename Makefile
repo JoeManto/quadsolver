@@ -34,3 +34,6 @@ test-system:
 clean:
 	rm -f src/*.o spikes/*.o all quadsolver spike system unit
 	rm -rf *.dSYM
+
+export:
+	tar -czvf quadsolverv1.tar.gz .

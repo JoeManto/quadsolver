@@ -30,6 +30,7 @@ Our make file handles all the of the following
 -   compiling and assembling all the spikes
 -   compiling,linking,and assembling all unit tests
 -   compiling,linking, and assembling all the system tests
+-   exporting the program to a tar ball.
 __________________________________________________________
 
 ### Version Control
