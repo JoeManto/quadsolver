@@ -4,3 +4,5 @@ quadsolver
 ./quadsolver
 spike.dSYM
 cout.log
+unit.dSYM
+system.dSYM
