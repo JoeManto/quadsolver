@@ -52,7 +52,7 @@ int input(void (*f)(double *),int size){
 
       //call input call back with the arguments
       (*f)(doubleTokens);
-      printf("%s\n","Enter another input | [q] : quit");
+      printf("%s\n","Enter another input | [q] : quit | [l] : start logging");
 
       free(stringTokenizedBuffer);
       return 1;
@@ -101,7 +101,10 @@ int tokenizeInput(char ** tokenizedInputBuffer,char * buffer,int numTokens){
 int convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int numTokens){
   int res = 1;
   for(int i = 0; i<numTokens; i++){
-    sscanf(tokenizeInputBuffer[i], "%lf", &doubleTokens[i]);
+    if((sscanf(tokenizeInputBuffer[i], "%lf", &doubleTokens[i])) == 0){
+      printf("%s", "ascii input is not valid\n\nPlease enter another input\n");
+      return 0;
+    }
     //run fpclassify to check for an inf, nan, a == 0
     if(i == 0 && fpclassify(doubleTokens[0]) == FP_ZERO){ //make sure a is not 0
       printf("%s\n","Input Error: first argument can't be zero");
@@ -143,13 +146,27 @@ void showHelp(){
  * @param [char*] input buffer from fgets
  */
 int checkForFlag(char flag , char * buffer){
-  return (*buffer == flag && *(buffer+1) == '\n');
+  return (*buffer == flag && (*(buffer+1) == '\n' || *(buffer+1) == '\0'));
 }
 
+/**
+ * This function redirects stdout to the file cout.log
+ */ 
 int setUpLogging(){
   printf("%s\n","logging started...stdout stream is now redirected to cout.log");
   int out = open("cout.log",O_RDWR | O_CREAT | O_TRUNC, 0600);
   if(-1 == out){perror("can't open clog.out");return 255;}
   if(-1 == dup2(out,fileno(stdout))){perror("can't redirect to stdout");return 255;}
+  return 1;
+}
+
+/**
+ * This function redirects stderr to the file cerr.log
+ */ 
+int setUpErrLogging(){
+  printf("%s\n","logging started...stderr stream is now redirected to cerr.log");
+  int err = open("cerr.log",O_RDWR | O_CREAT | O_TRUNC, 0600);
+  if(-1 == err){perror("can't open cerr.out");return 255;}
+  if(-1 == dup2(err,fileno(stderr))){perror("can't redirect to stderr");return 255;}
   return 1;
 }

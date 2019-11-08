@@ -41,6 +41,10 @@ The program will be run with Make instructions like -Wall
 __________________________________________________________
 
 -----------------------Testing----------------------------
+To run all unit tests do:
+    make unit
+    ./unit all
+    
 See readme.txt in the testing directory for more
 information.
 __________________________________________________________

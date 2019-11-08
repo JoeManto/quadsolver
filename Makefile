@@ -16,7 +16,7 @@ spike:
 
 #build unit tests exc
 unit:
-	gcc -Wall -Wpedantic -std=c11 testing/unit/*.c -g -o unit
+	gcc -Wall -Wpedantic -std=c11 testing/unit/*.c src/getInput.c -g -o unit 
 
 test-unit:
 	./unit

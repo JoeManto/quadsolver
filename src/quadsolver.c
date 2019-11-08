@@ -55,10 +55,12 @@ double findDiscriminant(double a, double b, double c){
 }
 
 /**
- * This function is a helper that prints the two roots of the quadratic
+ * This function is a helper that prints the results of the quadratic formula
  */
-void printRoots(double * roots){
-  printf("\nroot1: %.14g,\troot2: %.14g\n\n",roots[0],roots[1]);
+void printResult(double a, double b, double c, double * roots){
+  
+    printf("\n\t%.14gx^2 + %.14gx + %.14g = 0\n\n\troot1: %.14g,\troot2: %.14g\n\n",a,b,c,roots[0],roots[1]);
+
 }
 
 /**
@@ -83,6 +85,6 @@ void solve(double * args){
     roots[0] = root1; roots[1] = root2;
   }
   
-  printRoots(roots);
+  printResult(a,b,c,roots);
   free(args);
 }
