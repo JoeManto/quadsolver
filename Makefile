@@ -16,10 +16,10 @@ spike:
 
 #build unit tests exc
 unit:
-	gcc -Wall -Wpedantic -std=c11 testing/unit/*.c src/getInput.c -g -o unit 
+	gcc -Wall -Wpedantic -std=c11 testing/linkerQuadSolver.c testing/unit/*.c src/getInput.c -g -o unit 
 
 test-unit:
-	./unit
+	./unit all
 
 #build system tests exc
 system:

@@ -12,3 +12,4 @@ int convertTokensToDouble(double * doubleTokens,char ** tokenizeInputBuffer,int 
 int classifyDouble(double input);
 int setUpLogging();
 int setUpErrLogging();
+int checkForRoundOff(char * input);

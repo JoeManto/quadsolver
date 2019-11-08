@@ -4,22 +4,9 @@
  * Licensed under GNU General Public License. See LICENSE.txt for more information.
  */ 
 #include <stdio.h>
-#include "getInput.h"
-#include "quadsolver.h"
+#include "../src/getInput.h"
+#include "../src/quadsolver.h"
 
-/**
- * Execution of the program starts here
- * @param [int argc] the number of command line arguments
- * @param [char const *argv] the array of strings entered in the command line
- */ 
-int main(int argc, char const *argv[]) {
-
-  showDetails();
-  //200 should be the max number of character for 3 floats.
-  while(input(solve,1024));
-
-  return 0;
-}
 
 /**
  * This function prints the details section of the program to the user when called.

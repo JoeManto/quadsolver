@@ -7,4 +7,4 @@ void inputCallBack(double * args);
 void showDetails();
 void solve(double * args);
 double findDiscriminant(double a, double b, double c);
-void printRoots(double * roots);
+void printResult(double a, double b, double c, double * roots);
