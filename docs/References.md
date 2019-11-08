@@ -1,3 +1,5 @@
+
+## References
 Below are references used for things like IEEE, C programming, and others:
 
 Floating point numbers reference with information like mantissa digits.

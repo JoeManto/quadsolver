@@ -1,14 +1,14 @@
-README for Quadsolver for CS 4900
-------------------------Authors---------------------------
+## Quadsolver v1 for CS 4900
+### Authors
 Jared Teller - jared.e.teller@wmich.edu
 Joe Manto - joe.m.manto@wmich.edu
 __________________________________________________________
 
-------------------------Client----------------------------
+### Client
 J.K.K. Consulting. - john.kapenga@wmich.edu
 __________________________________________________________
 
----------------------Specifications-----------------------
+### Specifications
 This program will take in user input as follows:
 "a b c" where a,b, and c are floating point numbers. The
 quadratic equation (-b +- sqrt(b*b-4ac)) / 2a will be
@@ -16,13 +16,13 @@ computed and output to the user. Proper warnings will be
 given for bad input.
 __________________________________________________________
 
--------------Compile and Run Instructions-----------------
+### Compile and Run Instructions
 To run the core program use "make quad" which will run the
 executable ./quadsolver and start prompting for user
 input. To create the executable run "make".
 __________________________________________________________
 
--------------------------Automation-----------------------
+### Automation
 
 We used a make file for Automation to create a consistent compiling and linking experience.
 Our make file handles all the of the following
@@ -32,38 +32,38 @@ Our make file handles all the of the following
 -   compiling,linking, and assembling all the system tests
 __________________________________________________________
 
----------------------Version Control----------------------
+### Version Control
 Git was used for version control of the program and 
 allowed for effective pair programming. All tests must 
 pass before any change is made to the program.
 
 Git Commands:
-    git init
-    git add -A
-    git commit -m "message"
-    git push
+    - `git add -A`
+    - `git commit -m "message"`
+    - `git push <remote> master`
 __________________________________________________________
 
--------------------------Standards------------------------
+### Standards
 We decided to use the C11 standard for gcc. 
-The program will be run with Make instructions like -Wall 
--pedantic.
+The program will be run with Make instructions like `-Wall 
+-pedantic`.
 __________________________________________________________
 
------------------------Testing----------------------------
+### Testing
 To run all unit tests do:
-    make unit
-    ./unit all  or make test-unit
+- `make unit`
+
+- `./unit all  or make test-unit`
     
 To run all system tests do:
     make system
-    ./system  or make test-system
+- `./system  or make test-system`
 
-See readme.txt in the testing directory for more
+See readme in the testing directory for more
 information.
 __________________________________________________________
 
------------------------License----------------------------
+### License
 Licensed under GNU General Public License. See LICENSE.txt
 for more information.
 __________________________________________________________

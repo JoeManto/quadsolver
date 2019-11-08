@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>quadsolver</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><blockquote>
+<h2 id="quadsolver-v1-for-cs-4900">Quadsolver v1 for CS 4900</h2>
+</blockquote>
+<h3 id="authors">Authors</h3>
+<p>Jared Teller - <a href="mailto:jared.e.teller@wmich.edu">jared.e.teller@wmich.edu</a></p>
+<p>Joe Manto - <a href="mailto:joe.m.manto@wmich.edu">joe.m.manto@wmich.edu</a></p>
+<hr>
+<h3 id="client">Client</h3>
+<p>J.K.K. Consulting. - <a href="mailto:john.kapenga@wmich.edu">john.kapenga@wmich.edu</a></p>
+<hr>
+<h3 id="specifications">Specifications</h3>
+<p>This program will take in user input as follows:<br>
+“a b c” where a,b, and c are floating point numbers. The<br>
+quadratic equation (-b ± sqrt(b*b-4ac)) / 2a will be<br>
+computed and output to the user. Proper warnings will be<br>
+given for bad input.</p>
+<hr>
+<h3 id="compile-and-run-instructions">Compile and Run Instructions</h3>
+<p>To run the core program use “make quad” which will run the</p>
+<p>executable ./quadsolver and start prompting for user</p>
+<p>input. To create the executable run “make”.</p>
+<hr>
+<h3 id="automation">Automation</h3>
+<p>We used a make file for Automation to create a consistent compiling and linking experience.</p>
+<p>Our make file handles all the of the following</p>
+<ul>
+<li>
+<p>compiling and linking the correct object files for quadsolver</p>
+</li>
+<li>
+<p>compiling and assembling all the spikes</p>
+</li>
+<li>
+<p>compiling,linking,and assembling all unit tests</p>
+</li>
+<li>
+<p>compiling,linking, and assembling all the system tests</p>
+</li>
+</ul>
+<hr>
+<h3 id="version-control">Version Control</h3>
+<p>Git was used for version control of the program and<br>
+allowed for effective pair programming. All tests must<br>
+pass before any change is made to the program.</p>
+<p>Git Commands:</p>
+<ul>
+<li>
+<p><code>git add -A</code></p>
+</li>
+<li>
+<p><code>git commit -m "message"</code></p>
+</li>
+<li>
+<p><code>git push &lt;remote&gt; master</code></p>
+</li>
+</ul>
+<hr>
+<h3 id="general-standards">General Standards</h3>
+<p>We decided to use the C11 standard for gcc.<br>
+The program will be run with Make instructions like <code>-Wall -pedantic</code>.</p>
+<hr>
+<h3 id="testing">Testing</h3>
+<p>To run all unit tests do:</p>
+<ul>
+<li>
+<p><code>make unit</code></p>
+</li>
+<li>
+<p><code>./unit all or make test-unit</code></p>
+</li>
+</ul>
+<p>To run all system tests do:</p>
+<ul>
+<li>
+<p><code>make system</code></p>
+</li>
+<li>
+<p><code>./system or make test-system</code></p>
+</li>
+</ul>
+<p>See readme in the testing directory for more</p>
+<p>information.</p>
+<hr>
+<h3 id="license">License</h3>
+<p>Licensed under GNU General Public License. See LICENSE.txt</p>
+<p>for more information.</p>
+<hr>
+<h2 id="testing-standards">Testing Standards</h2>
+<p>Tests will be automated using <strong>Make</strong>.</p>
+<p>All tests will need to pass before any push is made in version control.</p>
+<h3 id="running-tests">Running Tests</h3>
+<p>To run all unit tests at once:</p>
+<ul>
+<li>
+<p><code>make unit</code></p>
+</li>
+<li>
+<p><code>./unit all</code></p>
+</li>
+</ul>
+<p>To run system test:</p>
+<ul>
+<li>
+<p><code>make system</code></p>
+</li>
+<li>
+<p><code>./system or make test-system</code></p>
+</li>
+</ul>
+<p>Unit tests were created for every function with input and output in the project.</p>
+<p>Testing directory contains the following sub directories:</p>
+<ul>
+<li>
+<p>Unit:</p>
+<p>unitTests.c - Runs test functions on quadsolver.c and getInput.c</p>
+<p>linkerQuadSolver - Helps link some functions from quadsolver to our<br>
+testing C files</p>
+</li>
+<li>
+<p>System:</p>
+<p>systemTests.c - Runs test functions on the overall system (solving<br>
+the quadratic)</p>
+</li>
+</ul>
+<h2 id="source-directory-for-quadsolver.">Source Directory for Quadsolver.</h2>
+<p>This directory includes the following C and header files:</p>
+<h3 id="getinput.c">getInput.c</h3>
+<p>This file is responsible for reading user input and tokenizing it into the proper buffers.</p>
+<p>The input will also be checked for flags for things like help, logging, and exiting the program.</p>
+<p>The floating point values entered by the user will also be checked for INFs, NaNs, and other bad input values.</p>
+<h3 id="getinput.h">getInput.h</h3>
+<p>The header file that contains function declarations for getInput.c.</p>
+<h3 id="quadsolver.c">quadsolver.c</h3>
+<p>The driver file for the program.</p>
+<p>This file will print getting started information to the user.</p>
+<p>This file will then solve the quadratic according to specifications provided by J.K.K consulting.</p>
+<h3 id="quadsolver.h">quadsolver.h</h3>
+<p>The header file that contains function declarations for quadsolver.c.</p>
+<h2 id="spikes">Spikes</h2>
+<p>Here you can find all the spikes for IEEE and some spikes related to finding the roots to a polynomial</p>
+<h3 id="running-a-spike">Running a spike</h3>
+<p><code>make clean -&gt; make createSpike -&gt; make spike &lt;SpikeNumber&gt;</code></p>
+<h3 id="standards">Standards</h3>
+<p>All spikes should be related to the program</p>
+<p>All spikes should be grouped on category</p>
+<ul>
+<li>
+<p>spikes should not be placed in random order</p>
+</li>
+<li>
+<p>categories should have title for what is being spiked (ex. IEEE)</p>
+</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Below are references used for things like IEEE, C programming, and others:</p>
+<p>Floating point numbers reference with information like mantissa digits.</p>
+<p><a href="http://www.hsafoundation.com/html/Content/PRM/Topics/04_SyntaxSemantics/floating_point_numbers.htm">http://www.hsafoundation.com/html/Content/PRM/Topics/04_SyntaxSemantics/floating_point_numbers.htm</a> - HSA specification library</p>
+<p>The GNU reference for all of the float and double values.</p>
+<p><a href="https://www.gnu.org/software/libc/manual/html_node/IEEE-Floating-Point.html">https://www.gnu.org/software/libc/manual/html_node/IEEE-Floating-Point.html</a> - <a href="http://GNU.org">GNU.org</a></p>
+<p>fpclassify reference for checking for NaNs and INFs</p>
+<p><a href="https://en.cppreference.com/w/cpp/numeric/math/fpclassify">https://en.cppreference.com/w/cpp/numeric/math/fpclassify</a></p>
+</div>
+</body>
+
+</html>
